@@ -1,3 +1,5 @@
+GIT=git
+
 LUA=luajit
 
 HTTPD=httpd
@@ -11,6 +13,7 @@ run-web: | dist
 	$(HTTPD) dist
 
 dist:
+	$(GIT) clone $(GIT_REPOSITORY) --branch $(GIT_BRANCH) dist
 	mkdir -p dist/lua
 	cp -r app dist/lua/
 	cp -r lib dist/lua/
